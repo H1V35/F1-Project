@@ -2,12 +2,9 @@ const { Schema, model } = require('mongoose')
 
 const userSchema = new Schema(
   {
-    nick: {
-      type: String
-    },
     username: {
       type: String,
-      required: false,
+      required: true,
       unique: true
     },
     email: {
@@ -19,16 +16,21 @@ const userSchema = new Schema(
       type: String,
       required: true
     },
-    profileImg: {
-      type: String,
-      default: 'https://i.stack.imgur.com/l60Hf.png'
-    },
-    bio: {
-      type: String
-    },
     team: {
       type: String,
       default: 'None'
+    },
+    nick: {
+      type: String,
+      default: ''
+    },
+    bio: {
+      type: String,
+      default: ''
+    },
+    profileImg: {
+      type: String,
+      default: 'https://i.stack.imgur.com/l60Hf.png'
     },
     favoritePosts: {
       type: [Schema.Types.ObjectId],

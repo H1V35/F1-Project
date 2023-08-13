@@ -1,5 +1,5 @@
-const session = require('express-session') // instalar
-const MongoStore = require('connect-mongo') // instalar
+const session = require('express-session')
+const MongoStore = require('connect-mongo')
 const mongoose = require('mongoose')
 
 module.exports = app => {
@@ -17,7 +17,7 @@ module.exports = app => {
         maxAge: 6000000
       },
       store: MongoStore.create({
-        mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost/basic-auth'
+        mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost/Project'
       })
     })
   )

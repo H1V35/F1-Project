@@ -1,2 +1,29 @@
-<h1>{{appTitle}} 🚀</h1>
-<p>Welcome Ironhacker!</p>
+<div class='container hero'>
+  <h1 class='text-shadow'>Welcome,</h1>
+
+  {{! Logged }}
+  <h2 class='text-shadow'>@Jorge</h2>
+
+  {{! Not logged }}
+  <div class='row mt-4'>
+
+    <div class='col-1'>
+      <div class='d-grid'>
+        <a href='/log-in' class='btn btn-dark shadow'>Log In</a>
+      </div>
+    </div>
+
+    <div class='col-1'>
+      <div class='d-grid'>
+        <a href='/sign-up' class='btn btn-dark shadow'>Sign Up</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class='video-container'>
+  <video autoplay loop class='video' volume='0'>
+    <source src='../videos/f1-home.mp4' type='video/mp4' />
+  </video>
+</div>

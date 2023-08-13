@@ -1,0 +1,63 @@
+<div class='container'>
+
+  <div class='row justify-content-center mt-5'>
+
+    <div class='col-md-6'>
+
+      <h1>Sign Up</h1>
+      <hr />
+
+      <form action='/sign-up' method='POST'>
+
+        <div class='mb-3'>
+          <label for='emailInput' class='form-label'>E-mail</label>
+          <input type='email' class='form-control' id='emailInput' name='email' />
+          <div class='form-text'>E-mail required</div>
+        </div>
+
+        <div class='mb-3 row'>
+          <div class='col'>
+            <label for='usernameInput' class='form-label'>Username</label>
+            <input type='text' class='form-control' id='usernameInput' name='username' />
+            <div class='form-text'>Username required</div>
+          </div>
+
+          <div class='col'>
+            <label for='pwdInput' class='form-label'>Password</label>
+            <input type='password' class='form-control' id='pwdInput' name='userPwd' />
+            <div class='form-text'>Password required</div>
+          </div>
+        </div>
+
+        <div class='mb-4'>
+          <label for='teamInput' class='form-label'>Team</label>
+          <select class='form-select' id='teamInput' name='team' aria-label='Default select example'>
+            <option value='NONE'>None</option>
+            <option value='ALFA_ROMEO'>Alfa Romeo</option>
+            <option value='ALPHATAURI'>AlphaTauri</option>
+            <option value='ALPINE'>Alpine</option>
+            <option value='ASTON_MARTIN'>Aston Martin</option>
+            <option value='FERRARI'>Ferrari</option>
+            <option value='HAAS'>Haas</option>
+            <option value='MCLAREN'>McLaren</option>
+            <option value='MERCEDES'>Mercedes</option>
+            <option value='RED_BULL'>Red Bull</option>
+            <option value='WILLIAMS'>Williams</option>
+          </select>
+        </div>
+
+        <div class='d-grid mb-3'>
+          <button type='submit' class='btn btn-dark block'>Sign Up</button>
+        </div>
+
+        {{#if errorMessage}}
+          <div id='errorMessage' class='d-grid'>
+            <button type='button' class='btn btn-primary' disabled>{{errorMessage}}</button>
+          </div>
+        {{/if}}
+
+      </form>
+    </div>
+  </div>
+
+</div>
