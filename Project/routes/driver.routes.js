@@ -1,12 +1,13 @@
 const router = require('express').Router()
 const f1Api = require('../services/f1.service')
 
-router.get('/details/:id', (req, res, next) => {
-  const { id: driver_Id } = req.params
+router.get('/:driverId/details', (req, res, next) => {
+  const { driverId } = req.params
   f1Api
-    .getOneDriver(driver_Id)
+    .getOneDriver(driverId)
     .then(responseFromAPI => {
-      res.send({ driver: responseFromAPI.data })
+      console.log(responseFromAPI)
+      res.send(responseFromAPI.data)
     })
     .catch(err => console.log(err))
 })

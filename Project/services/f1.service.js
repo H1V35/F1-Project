@@ -12,7 +12,7 @@ class F1ApiHandler {
   }
 
   getAllResults() {
-    return this.axiosApp.get('/results.json')
+    return this.axiosApp.get('/2023/results.json')
   }
 
   getAllDriversStandings() {

@@ -1,12 +1,14 @@
-<hr />
+<div class="container mt-5">
+    <hr />
 
-{{#each races}}
+    {{#each races}}
 
-  <h2>Round: </h2>
-  <h2>Circuit: </h2>
-  <h3>Date: </h3>
-  <h3>Location: </h3>
+    <h2>Round: {{round}}</h2>
+    <h2>Circuit: {{Circuit.circuitName}}</h2>
+    <h3>Date: {{date}}</h3>
+    <h3>Location: {{Circuit.Location.locality}} ({{Circuit.Location.country}})</h3>
 
-  <hr />
+    <hr />
 
-{{/each}}
+    {{/each}}
+</div>

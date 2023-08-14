@@ -12,10 +12,10 @@ module.exports = app => {
   app.use('/standings', standingRoutes)
 
   const driverRoutes = require('./driver.routes')
-  app.use('/driver', driverRoutes)
+  app.use('/', driverRoutes)
 
   const teamRoutes = require('./team.routes')
-  app.use('/team', teamRoutes)
+  app.use('/', teamRoutes)
 
   const communityRoutes = require('./community.routes')
   app.use('/community', communityRoutes)
