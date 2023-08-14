@@ -1,7 +1,12 @@
-const Schema = require('mongoose').Schema
+const { Schema, model } = require('mongoose')
 
 const postSchema = new Schema(
   {
+    category: {
+      type: String,
+      enum: ['GENERAL', 'ALFA_ROMEO', 'ALPHATAURI', 'ALPINE', 'ASTON_MARTIN', 'FERRARI', 'HAAS', 'MCLAREN', 'MERCEDES', 'RED_BULL', 'WILLIAMS'],
+      default: 'GENERAL'
+    },
     title: {
       type: String
     },
@@ -9,7 +14,7 @@ const postSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'User'
     },
-    description: {
+    text: {
       type: String
     },
     number_order: {
@@ -19,16 +24,12 @@ const postSchema = new Schema(
       type: String,
       default: 'main'
     }
-    // favorites: {
-    //   type: [Schema.Types.ObjectId],
-    //   ref: 'User'
-    // }
   },
   {
     timestamps: true
   }
 )
 
-const Post = mongoose.model('Post', postSchema)
+const Post = model('Post', postSchema)
 
 module.exports = Post

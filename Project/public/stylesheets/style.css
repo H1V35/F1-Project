@@ -79,6 +79,28 @@ footer {
   border: #ff0000 solid 0.1rem;
 }
 
+.btn-login {
+  background-color: #ff0000;
+  border: #ff0000 solid 0.1rem;
+}
+
+.btn-login:hover {
+  background-color: rgb(255, 100, 100);
+  border: #ff0000 solid 0.1rem;
+}
+
+.btn-check:checked + .btn {
+  background-color: #ff0000;
+  border: #ff0000 solid 0.1rem;
+}
+
+.btn-outline-primary {
+  border: #ff0000 solid 0.1rem;
+  color: #ffffff;
+  --bs-btn-border-color: #ff0000;
+  --bs-btn-color: rgb(195, 195, 195);
+}
+
 .video-container {
   position: fixed;
   top: 0;

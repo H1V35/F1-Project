@@ -1,19 +1,19 @@
 <div class='container hero'>
 
   {{! Logged }}
-  {{#if user.username}}
+  {{#if loggedUser}}
     <h1 class='text-shadow-index'>Welcome,</h1>
-    <h2 class='text-shadow-index'>@{{user.username}}</h2>
+    <h2 class='text-shadow-index'>@{{loggedUser.username}}</h2>
   {{/if}}
 
   {{! Not logged }}
-  {{#unless user.username}}
+  {{#unless loggedUser}}
     <h1 class='text-shadow-index'>Welcome</h1>
     <div class='row mt-4'>
 
       <div class='col-1'>
         <div class='d-grid'>
-          <a href='/log-in' class='btn btn-dark btn-index shadow'>Log-In</a>
+          <a href='/log-in' class='btn btn-dark btn-login btn-index shadow'>Log-In</a>
         </div>
       </div>
 

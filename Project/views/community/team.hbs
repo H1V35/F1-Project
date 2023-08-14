@@ -1,0 +1,9 @@
+<div class='container mt-4'>
+  <div class='btn-group shadow' role='group' aria-label='Basic radio toggle button group'>
+    <input type='radio' class='btn-check' name='btnradio' id='general' autocomplete='off' />
+    <a href='/community' class='btn btn-outline-primary' for='general'>GENERAL</a>
+
+    <input type='radio' class='btn-check' name='btnradio' id='team' autocomplete='off' checked />
+    <a href='/community/{{loggedUser.team}}' class='btn btn-outline-primary' for='team'>{{loggedUser.team}}</a>
+  </div>
+</div>

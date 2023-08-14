@@ -17,6 +17,9 @@ module.exports = app => {
   const teamRoutes = require('./team.routes')
   app.use('/team', teamRoutes)
 
+  const communityRoutes = require('./community.routes')
+  app.use('/community', communityRoutes)
+
   //   const apiRoutes = require('./api.routes')
   //   app.use('/api', apiRoutes)
 }

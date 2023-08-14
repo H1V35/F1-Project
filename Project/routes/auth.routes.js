@@ -3,7 +3,6 @@ const bcrypt = require('bcryptjs')
 const User = require('../models/User.model')
 const saltRounds = 10
 
-// Signup
 router.get('/sign-up', (req, res, next) => res.render('auth/signup'))
 router.post('/sign-up', (req, res, next) => {
   const { username, email, userPwd, team, nick, bio, profileImg } = req.body
@@ -20,8 +19,8 @@ router.post('/sign-up', (req, res, next) => {
     }
   })
 
-  if (username.length < 2 || username.length > 16) {
-    res.render('auth/signup', { errorMessage: 'Username min 2 / 16 max characters' })
+  if (username.length < 2 || username.length > 18) {
+    res.render('auth/signup', { errorMessage: 'Username min 2 / 18 max characters' })
     return
   }
 
@@ -45,7 +44,6 @@ router.post('/sign-up', (req, res, next) => {
     .catch(error => next(error))
 })
 
-// Login
 router.get('/log-in', (req, res, next) => res.render('auth/login'))
 router.post('/log-in', (req, res, next) => {
   const { username, userPwd } = req.body
@@ -66,7 +64,6 @@ router.post('/log-in', (req, res, next) => {
     .catch(error => next(error))
 })
 
-// Logout
 router.post('/log-out', (req, res, next) => {
   req.session.destroy(() => res.redirect('/'))
 })

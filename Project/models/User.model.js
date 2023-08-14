@@ -34,7 +34,7 @@ const userSchema = new Schema(
     },
     favoritePosts: [
       {
-        type: [Schema.Types.ObjectId],
+        type: Schema.Types.ObjectId,
         ref: 'Post'
       }
     ],
