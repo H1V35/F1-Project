@@ -32,10 +32,12 @@ const userSchema = new Schema(
       type: String,
       default: 'https://i.stack.imgur.com/l60Hf.png'
     },
-    favoritePosts: {
-      type: [Schema.Types.ObjectId],
-      ref: 'Post'
-    },
+    favoritePosts: [
+      {
+        type: [Schema.Types.ObjectId],
+        ref: 'Post'
+      }
+    ],
     role: {
       type: String,
       enum: ['ADMIN', 'USER-PREMIUM', 'USER'],

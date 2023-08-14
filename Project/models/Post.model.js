@@ -15,14 +15,14 @@ const postSchema = new Schema(
     number_order: {
       type: Number
     },
-    post_id: {
+    post_id_ref: {
       type: String,
       default: 'main'
-    },
-    favorites: {
-      type: [Schema.Types.ObjectId],
-      ref: 'User'
     }
+    // favorites: {
+    //   type: [Schema.Types.ObjectId],
+    //   ref: 'User'
+    // }
   },
   {
     timestamps: true
