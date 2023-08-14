@@ -20,8 +20,8 @@ router.post('/sign-up', (req, res, next) => {
     }
   })
 
-  if (!username.length) {
-    res.render('auth/signup', { errorMessage: 'Username required' })
+  if (username.length < 2 || username.length > 16) {
+    res.render('auth/signup', { errorMessage: 'Username min 2 / 16 max characters' })
     return
   }
 
@@ -68,7 +68,7 @@ router.post('/log-in', (req, res, next) => {
 
 // Logout
 router.post('/log-out', (req, res, next) => {
-  req.session.destroy(() => res.redirect('/log-in'))
+  req.session.destroy(() => res.redirect('/'))
 })
 
 module.exports = router

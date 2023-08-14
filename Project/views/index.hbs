@@ -1,25 +1,30 @@
 <div class='container hero'>
-  <h1 class='text-shadow'>Welcome,</h1>
 
   {{! Logged }}
-  <h2 class='text-shadow'>@Jorge</h2>
+  {{#if user.username}}
+    <h1 class='text-shadow-index'>Welcome,</h1>
+    <h2 class='text-shadow-index'>@{{user.username}}</h2>
+  {{/if}}
 
   {{! Not logged }}
-  <div class='row mt-4'>
+  {{#unless user.username}}
+    <h1 class='text-shadow-index'>Welcome</h1>
+    <div class='row mt-4'>
 
-    <div class='col-1'>
-      <div class='d-grid'>
-        <a href='/log-in' class='btn btn-dark shadow'>Log In</a>
+      <div class='col-1'>
+        <div class='d-grid'>
+          <a href='/log-in' class='btn btn-dark btn-index shadow'>Log-In</a>
+        </div>
       </div>
-    </div>
 
-    <div class='col-1'>
-      <div class='d-grid'>
-        <a href='/sign-up' class='btn btn-dark shadow'>Sign Up</a>
+      <div class='col-1'>
+        <div class='d-grid'>
+          <a href='/sign-up' class='btn btn-dark btn-index shadow'>Sign-Up</a>
+        </div>
       </div>
-    </div>
 
-  </div>
+    </div>
+  {{/unless}}
 </div>
 
 <div class='video-container'>

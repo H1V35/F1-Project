@@ -11,10 +11,10 @@
 | GET         | /races/schedule                  | Races schedule page    | ✅   |
 | GET         | /races/results                   | Race results page      | ✅   |
 | GET         | /races/forecasts                 | Race forecast page     | ✅   |
-| GET         | /standing                        | Standings page         |      |
-| GET         | /standing/drivers                | Drivers standing page  | ✅   |
+| GET         | /standings                       | Standings page         |      |
+| GET         | /standings/drivers               | Drivers standing page  | ✅   |
 | GET         | /driver/details                  | Driver details         | ✅   |
-| GET         | /standing/teams                  | Teams standing page    | ✅   |
+| GET         | /standings/teams                 | Teams standing page    | ✅   |
 | GET         | /team/details                    | Team details           | ✅   |
 | GET         | /community                       | Community general page |      |
 | GET         | /community/team                  | Team community page    |      |

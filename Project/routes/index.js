@@ -9,7 +9,7 @@ module.exports = app => {
   app.use('/races', racesRoutes)
 
   const standingRoutes = require('./standings.routes')
-  app.use('/standing', standingRoutes)
+  app.use('/standings', standingRoutes)
 
   const driverRoutes = require('./driver.routes')
   app.use('/driver', driverRoutes)

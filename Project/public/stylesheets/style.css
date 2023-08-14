@@ -43,8 +43,16 @@ footer {
   margin-left: 6rem;
 }
 
-.text-shadow {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+.text-shadow-index {
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.75);
+}
+
+/* .text-shadow {
+  text-shadow: 3px 3px 7px rgba(255, 255, 255, 0.5);
+} */
+
+.shadow {
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.75);
 }
 
 .hero h1 {
@@ -55,6 +63,10 @@ footer {
 .hero h2 {
   font-family: F1-Regular;
   font-size: 2.5rem;
+}
+
+.btn-index {
+  width: 6.25rem;
 }
 
 .btn-dark {
@@ -88,13 +100,75 @@ footer {
   font-size: 0.7rem;
 }
 
+.logout-form {
+  margin: 0;
+}
+
+.full-height {
+  height: calc(100vh - 56px);
+}
+
+.col-drivers-standings {
+  padding-left: 12px;
+  padding-right: 0;
+  background-image: url('../images/f1-drivers.jpg');
+  background-size: cover;
+}
+
+.col-constructors-standings {
+  padding-left: 0;
+  padding-right: 12px;
+  background-image: url('../images/f1-contructors.jpg');
+  background-size: cover;
+}
+
+.btn-standings {
+  /* background: none; */
+  border-radius: 0;
+  display: flex;
+  position: absolute;
+  padding: 0;
+  width: 50vw;
+  border-radius: 0;
+  background-color: rgba(160, 160, 160, 0.5);
+  border: none;
+  color: rgb(160, 160, 160);
+  text-shadow: none;
+}
+
+.btn-standings:hover {
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.75);
+}
+
+.btn-standings-drivers {
+  justify-content: right;
+  /* align-items: center; */
+  padding-right: 1.5rem;
+}
+
+.btn-standings-constructors {
+  justify-content: left;
+  /* align-items: center; */
+  padding-left: 1.5rem;
+}
+
+.btn-standings p {
+  font-size: 3rem;
+  font-family: F1-Wide;
+  /* font-style: italic; */
+}
+
+.btn-text-center {
+  text-align: center;
+}
+
 #errorMessage button {
   background-color: #ff0000;
   border: #ff0000;
   font-size: 1em;
   opacity: 100;
   text-align: center;
-  animation: show 6s forwards;
+  animation: showAnimation 4s forwards;
 }
 
 #nav-behind {
@@ -102,4 +176,19 @@ footer {
   padding-right: 100%;
   position: relative;
   top: 0;
+}
+
+@keyframes showAnimation {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
