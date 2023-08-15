@@ -23,6 +23,11 @@ class F1ApiHandler {
     return this.axiosApp.get('/2023/constructorstandings.json')
   }
 
+  getAllCircuits() {
+    return this.axiosApp.get('/2023/circuits.json')
+  }
+
+
   getOneDriver(driver_Id) {
     return this.axiosApp.get(`/2023/drivers/${driver_Id}.json`)
   }

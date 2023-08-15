@@ -89,7 +89,7 @@ footer {
   border: #ff0000 solid 0.1rem;
 }
 
-.btn-check:checked + .btn {
+.btn-check:checked+.btn {
   background-color: #ff0000;
   border: #ff0000 solid 0.1rem;
 }
@@ -200,16 +200,23 @@ footer {
   top: 0;
 }
 
+#myMap {
+  height: 70vh;
+}
+
 @keyframes showAnimation {
   0% {
     opacity: 0;
   }
+
   10% {
     opacity: 1;
   }
+
   90% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }
