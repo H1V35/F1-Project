@@ -11,12 +11,6 @@ module.exports = app => {
   const standingRoutes = require('./standings.routes')
   app.use('/standings', standingRoutes)
 
-  const driverRoutes = require('./driver.routes')
-  app.use('/', driverRoutes)
-
-  const teamRoutes = require('./team.routes')
-  app.use('/', teamRoutes)
-
   const communityRoutes = require('./community.routes')
   app.use('/community', communityRoutes)
 

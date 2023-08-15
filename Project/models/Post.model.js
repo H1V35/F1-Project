@@ -7,18 +7,19 @@ const postSchema = new Schema(
       enum: ['GENERAL', 'ALFA_ROMEO', 'ALPHATAURI', 'ALPINE', 'ASTON_MARTIN', 'FERRARI', 'HAAS', 'MCLAREN', 'MERCEDES', 'RED_BULL', 'WILLIAMS'],
       default: 'GENERAL'
     },
-    title: {
-      type: String
-    },
     owner: {
       type: Schema.Types.ObjectId,
       ref: 'User'
+    },
+    title: {
+      type: String
     },
     text: {
       type: String
     },
     number_order: {
-      type: Number
+      type: Number,
+      default: 0
     },
     post_id_ref: {
       type: String,

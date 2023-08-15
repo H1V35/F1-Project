@@ -23,7 +23,7 @@
 
     <div class='col-4'>
       <div>
-        <a href='/community/new-post' class='btn btn-dark shadow'>New Post</a>
+        <a href='/community/post/{{posts.0._id}}/new-reply' class='btn btn-dark shadow'>New Reply</a>
       </div>
     </div>
   </div>
@@ -31,7 +31,13 @@
   <hr />
 
   {{#each posts}}
-    <a href='/community/post/{{_id}}' class='mb-3 d-grid btn btn-dark shadow'>{{title}}</a>
+    <div class='mt-3 mb-5 card'>
+      <div class='card-body'>
+        <h2>{{title}}</h2>
+        <br />
+        <h3>{{text}}</h3>
+      </div>
+    </div>
   {{/each}}
 
 </div>

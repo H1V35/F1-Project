@@ -16,7 +16,6 @@ const isLoggedIn = (req, res, next) => {
 
 const updateLoggedUser = (req, res, next) => {
   res.locals.loggedUser = req.session.currentUser
-  console.log(res.locals.loggedUser)
   //   res.locals.userIsAdmin = req.session.currentUser?.role === 'ADMIN'
   //   res.locals.userIsEditor = req.session.currentUser?.role === 'USER_PREMIUM'
   //   res.locals.userIsBasic = req.session.currentUser?.role === 'USER'
