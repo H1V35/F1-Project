@@ -1,14 +1,38 @@
 <div class="container mt-5">
     <hr />
 
-    {{#each races}}
-
-    <h2>Round: {{round}}</h2>
-    <h2>Circuit: {{Circuit.circuitName}}</h2>
-    <h3>Date: {{date}}</h3>
-    <h3>Location: {{Circuit.Location.locality}} ({{Circuit.Location.country}})</h3>
-
-    <hr />
-
+    {{#each new_races}}
+    <div>
+        <h2>Round: {{round}}</h2>
+        <h2>Circuit: {{Circuit.circuitName}}</h2>
+        <h3>Date: {{date}}</h3>
+        <h3>Location: {{Circuit.Location.locality}} ({{Circuit.Location.country}})</h3>
+        <hr />
+    </div>
     {{/each}}
+
+    <hr>
+    <hr>
+    <hr>
+
+    {{#each old_races}}
+    <div>
+        <h2>Round: {{round}}</h2>
+        <h2>Circuit: {{Circuit.circuitName}}</h2>
+        <h3>Date: {{date}}</h3>
+        <h3>Location: {{Circuit.Location.locality}} ({{Circuit.Location.country}})</h3>
+        <hr />
+    </div>
+    {{/each}}
+
+    <div class='container'>
+        <h1>Places</h1>
+        <hr />
+        <figure id='myMap'></figure>
+    </div>
+    <script src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js'></script>
+    <script src='/js/places-map.js'></script>
+    <script
+        src='https://maps.googleapis.com/maps/api/js?key=AIzaSyA-m5wqt0HAtZNIspTAPkR71XfKggwWX_0&callback=init'></script>
+
 </div>
