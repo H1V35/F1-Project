@@ -1,12 +1,10 @@
 <div class='container hero'>
 
-  {{! Logged }}
   {{#if loggedUser}}
     <h1 class='text-shadow-index'>Welcome,</h1>
     <h2 class='text-shadow-index'>@{{loggedUser.username}}</h2>
   {{/if}}
 
-  {{! Not logged }}
   {{#unless loggedUser}}
     <h1 class='text-shadow-index'>Welcome</h1>
     <div class='row mt-4'>

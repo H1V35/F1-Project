@@ -2,7 +2,7 @@ const router = require('express').Router()
 const f1Api = require('../services/f1.service')
 
 router.get('/', (req, res, next) => {
-  res.render('standings/select', { user: req.session.currentUser })
+  res.render('standings/select')
 })
 
 router.get('/drivers', (req, res, next) => {

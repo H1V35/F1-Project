@@ -1,17 +1,46 @@
-<hr />
+<div class='container my-5'>
 
-{{#each drivers}}
+  {{#each drivers}}
 
-<h2>Position: {{position}}</h2>
-<h2>Name: {{Driver.givenName}} {{Driver.familyName}}</h2>
-<h3>Nationality: {{Driver.nationality}}</h3>
-<br />
+    <div class='card mb-3'>
+      <div class='card-side front'>
+        <div class='row'>
+          <div class='col-4'>
+            <div class='row'>
+              <div class='col'>
+                <h2>{{position}}º</h2>
+              </div>
+            </div>
+            <div class='row'>
+              <div class='col'>
+                <h2>{{points}}</h2>
+              </div>
+            </div>
+          </div>
+          <div class='col-4'>
+            <h3>{{Driver.givenName}} {{Driver.familyName}}</h3>
+          </div>
+          <div class='col-4'>
+            <h4>{{Constructors.0.name}}</h4>
+          </div>
+        </div>
+      </div>
 
-<h2>Points: {{points}}</h2>
-<h3>Code: {{Driver.code}}</h3>
-<h3>Team: {{Constructors.0.name}}</h3>
-<a href="/{{Driver.driverId}}/details">Details</a>
+      <div class='card-side back'>
+        <div class='row'>
+          <div class='col-4'>
+            <h2>*IMAGEN*</h2>
+          </div>
+          <div class='col-4'>
+            <h3>{{Driver.code}}</h3>
+          </div>
+          <div class='col-4'>
+            <h4>{{Driver.nationality}}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<hr />
+  {{/each}}
 
-{{/each}}
+</div>
