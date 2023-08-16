@@ -15,25 +15,16 @@ class F1ApiHandler {
     return this.axiosApp.get('/2023/results.json')
   }
 
+  getAllCircuits() {
+    return this.axiosApp.get('/2023/circuits.json')
+  }
+
   getAllDriversStandings() {
     return this.axiosApp.get('/2023/driverstandings.json')
   }
 
   getAllTeamsStandings() {
     return this.axiosApp.get('/2023/constructorstandings.json')
-  }
-
-  getAllCircuits() {
-    return this.axiosApp.get('/2023/circuits.json')
-  }
-
-
-  getOneDriver(driver_Id) {
-    return this.axiosApp.get(`/2023/drivers/${driver_Id}.json`)
-  }
-
-  getOneTeam(team_Id) {
-    return this.axiosApp.get(`/2023/constructors/${team_Id}.json`)
   }
 }
 
