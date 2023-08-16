@@ -19,4 +19,20 @@
     </div>
   </div>
 
+  <div class='row mt-3 justify-content-left'>
+
+    <div class='col-4'>
+      <div>
+        <a href='/community/{{loggedUser.team}}/new-post' class='btn btn-dark shadow'>New Post</a>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  {{#each posts}}
+  <a href='/community/{{category}}/post/{{_id}}' class='mb-3 d-grid btn btn-dark shadow'>{{owner.username}} |
+    {{title}}</a>
+  {{/each}}
+
 </div>

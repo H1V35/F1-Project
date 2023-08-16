@@ -1,0 +1,29 @@
+<div class='container'>
+
+    <div class='row justify-content-center mt-5'>
+
+        <div class='col'>
+
+            <h1>New Reply</h1>
+            <hr />
+            <form action='/community/{{loggedUser.team}}/post/{{_id}}/new-reply' method='POST'>
+
+                <div class='mb-3'>
+                    <label for='titleInput' class='form-label'>Title</label>
+                    <input type='text' class='form-control' id='titleInput' name='title' />
+                </div>
+
+                <div class='mb-3'>
+                    <label for='textInput' class='form-label'>Text</label>
+                    <textarea type='text' class='form-control' id='textInput' name='text' rows='16'></textarea>
+                </div>
+
+                <div class='d-grid mb-3'>
+                    <button type='submit' class='btn btn-dark block'>CREATE</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
