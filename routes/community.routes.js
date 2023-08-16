@@ -15,6 +15,7 @@ router.get('/users', (req, res, next) => {
 // General
 router.get('/', (req, res, next) => {
   Post.find({ $and: [{ category: 'GENERAL' }, { post_id_ref: 'main' }] })
+    .populate('owner')
     .then(posts => {
       res.render('community/general', { posts })
     })
@@ -37,7 +38,9 @@ router.post('/new-post', (req, res, next) => {
 router.get('/post/:id', (req, res, next) => {
   const { id } = req.params
 
-  Post.find({ $or: [{ _id: id }, { post_id_ref: id }] }).then(posts => res.render('community/general-post', { posts }))
+  Post.find({ $or: [{ _id: id }, { post_id_ref: id }] })
+    .populate('owner')
+    .then(posts => res.render('community/general-post', { posts }))
 })
 
 // General - Post - New Reply
@@ -64,6 +67,7 @@ router.get('/:team', (req, res, next) => {
 
   if (team === user_team) {
     Post.find({ team })
+      .populate('owner')
       .then(posts => {
         res.render('community/team', { posts })
       })
