@@ -352,7 +352,13 @@ function getPlacesData() {
     .then(responseFromAPI => {
       const allRaces = responseFromAPI.data.MRData.RaceTable.Races
       const locations = allRaces.map(race => {
-        return { circuitName: race.Circuit.circuitName, location: { lat: Number(race.Circuit.Location.lat), long: Number(race.Circuit.Location.long) } }
+        return {
+          circuitName: race.Circuit.circuitName,
+          location: {
+            lat: Number(race.Circuit.Location.lat),
+            long: Number(race.Circuit.Location.long)
+          }
+        }
       })
       printMarkers(locations)
     })
