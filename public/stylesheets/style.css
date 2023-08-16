@@ -13,6 +13,10 @@
   src: url('../fonts/Formula1-Regular.otf');
 }
 
+img {
+  width: 100%;
+}
+
 body {
   background-color: rgb(20, 20, 20);
   font-family: F1-Regular;
@@ -89,7 +93,7 @@ footer {
   border: #ff0000 solid 0.1rem;
 }
 
-.btn-check:checked+.btn {
+.btn-check:checked + .btn {
   background-color: #ff0000;
   border: #ff0000 solid 0.1rem;
 }

@@ -32,6 +32,16 @@
 
   <h2>{{posts.0.title}}</h2>
 
+  {{#if isFav}}
+    <form action='/community/post/{{posts.0._id}}' method='POST'>
+      <button type='submit' class='btn btn-login block shadow'>Fav</button>
+    </form>
+  {{else}}
+    <form action='/community/post/{{posts.0._id}}' method='POST'>
+      <button type='submit' class='btn btn-dark block shadow'>Fav</button>
+    </form>
+  {{/if}}
+
   {{#each posts}}
     <div class='mt-3 mb-5 card'>
       <div class='card-body'>

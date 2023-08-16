@@ -36,11 +36,37 @@ router.post('/new-post', (req, res, next) => {
 
 // General - View Post
 router.get('/post/:id', (req, res, next) => {
-  const { id } = req.params
+  const { id: post_id } = req.params
+  const { _id: currentUser_id } = req.session.currentUser
+  let isFav
 
-  Post.find({ $or: [{ _id: id }, { post_id_ref: id }] })
+  User.findById(currentUser_id).then(user => {
+    isFav = user.favoritePosts.includes(post_id) ? true : false
+  })
+
+  Post.find({ $or: [{ _id: post_id }, { post_id_ref: post_id }] })
     .populate('owner')
-    .then(posts => res.render('community/general-post', { posts }))
+    .then(posts => res.render('community/general-post', { posts, isFav }))
+})
+
+router.post('/post/:id', (req, res, next) => {
+  const { id: post_id } = req.params
+  const { _id: currentUser_id } = req.session.currentUser
+  let isFav
+
+  User.findById(currentUser_id).then(user => {
+    isFav = user.favoritePosts.includes(post_id) ? true : false
+
+    if (isFav) {
+      User.findByIdAndUpdate(currentUser_id, { $pull: { favoritePosts: post_id } })
+        .then(() => res.redirect(`/community/post/${post_id}`))
+        .catch(err => next(err))
+    } else {
+      User.findByIdAndUpdate(currentUser_id, { $addToSet: { favoritePosts: post_id } })
+        .then(() => res.redirect(`/community/post/${post_id}`))
+        .catch(err => next(err))
+    }
+  })
 })
 
 // General - Post - New Reply
