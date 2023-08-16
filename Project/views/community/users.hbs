@@ -4,7 +4,7 @@
 
     <div class='col-3'>
       <div class='btn-group shadow' role='group' aria-label='Basic radio toggle button group'>
-        <input type='radio' class='btn-check' name='btnradio' id='general' autocomplete='off' checked />
+        <input type='radio' class='btn-check' name='btnradio' id='general' autocomplete='off' />
         <a href='/community' class='btn btn-outline-primary' for='general'>GENERAL</a>
 
         <input type='radio' class='btn-check' name='btnradio' id='team' autocomplete='off' />
@@ -14,24 +14,16 @@
 
     <div class='col-1'>
       <div>
-        <a href='/community/users' class='btn btn-dark btn-index shadow'>USERS</a>
-      </div>
-    </div>
-  </div>
-
-  <div class='row mt-3 justify-content-left'>
-
-    <div class='col-4'>
-      <div>
-        <a href='/community/new-post' class='btn btn-dark shadow'>New Post</a>
+        <a href='/community/users' class='btn btn-dark btn-login btn-index shadow'>USERS</a>
       </div>
     </div>
   </div>
 
   <hr />
 
-  {{#each posts}}
-    <a href='/community/post/{{_id}}' class='mb-3 d-grid btn btn-dark shadow'>{{title}}</a>
+  {{#each users}}
+    <h2>{{username}}</h2>
+    <hr />
   {{/each}}
 
 </div>
