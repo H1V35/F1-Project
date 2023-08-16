@@ -18,20 +18,22 @@ const userSchema = new Schema(
     },
     team: {
       type: String,
-      default: 'None'
-    },
-    nick: {
-      type: String,
-      default: ''
+      default: 'NONE'
     },
     bio: {
       type: String,
       default: ''
     },
-    profileImg: {
+    avatar: {
       type: String,
       default: 'https://i.stack.imgur.com/l60Hf.png'
     },
+    createdPosts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Post'
+      }
+    ],
     favoritePosts: [
       {
         type: Schema.Types.ObjectId,
