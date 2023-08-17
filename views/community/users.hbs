@@ -5,7 +5,7 @@
     <div class='col-3'>
       <div class='btn-group shadow' role='group' aria-label='Basic radio toggle button group'>
         <input type='radio' class='btn-check' name='btnradio' id='general' autocomplete='off' />
-        <a href='/community' class='btn btn-outline-primary' for='general'>GENERAL</a>
+        <a href='/community/GENERAL' class='btn btn-outline-primary' for='general'>GENERAL</a>
 
         <input type='radio' class='btn-check' name='btnradio' id='team' autocomplete='off' />
         <a href='/community/{{loggedUser.team}}' class='btn btn-outline-primary' for='team'>TEAM</a>
@@ -23,6 +23,7 @@
 
   {{#each users}}
     <h2>{{username}}</h2>
+    <a href='/community/user/{{username}}'>View</a>
     <hr />
   {{/each}}
 

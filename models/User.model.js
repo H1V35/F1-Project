@@ -28,12 +28,6 @@ const userSchema = new Schema(
       type: String,
       default: 'https://i.stack.imgur.com/l60Hf.png'
     },
-    createdPosts: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Post'
-      }
-    ],
     favoritePosts: [
       {
         type: Schema.Types.ObjectId,

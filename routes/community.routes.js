@@ -12,8 +12,42 @@ router.get('/users', (req, res, next) => {
     .catch(err => console.log(err))
 })
 
+// Users - View User
+router.get('/user/:username', (req, res, next) => {
+  const { username } = req.params
+
+  User.findOne({ username })
+    .then(user => {
+      let hasTeam
+      hasTeam = user.team === 'NONE' ? false : true
+
+      Post.find({ $and: [{ category: 'GENERAL' }, { owner: user._id }, { post_id_ref: 'main' }] })
+        .then(posts => {
+          res.render('community/user-profile', { user, posts, hasTeam })
+        })
+        .catch(err => console.log(err))
+    })
+    .catch(err => console.log(err))
+})
+
+// Users - View User - Team_Posts
+router.get('/user/:username/posts/:team', (req, res, next) => {
+  const { username } = req.params
+
+  User.findOne({ username }).then(user => {
+    let hasTeam
+    hasTeam = user.team === 'NONE' ? false : true
+
+    Post.find({ $and: [{ category: user.team }, { owner: user._id }, { post_id_ref: 'main' }] })
+      .then(posts => {
+        res.render('community/user-team_posts', { user, posts, hasTeam })
+      })
+      .catch(err => console.log(err))
+  })
+})
+
 // General
-router.get('/', (req, res, next) => {
+router.get('/GENERAL', (req, res, next) => {
   Post.find({ $and: [{ category: 'GENERAL' }, { post_id_ref: 'main' }] })
     .populate('owner')
     .then(posts => {
@@ -23,40 +57,66 @@ router.get('/', (req, res, next) => {
 })
 
 // General - New Post
-router.get('/new-post', (req, res, next) => res.render('community/new-post'))
+router.get('/GENERAL/new-post', (req, res, next) => res.render('community/new-post'))
 
-router.post('/new-post', (req, res, next) => {
+router.post('/GENERAL/new-post', (req, res, next) => {
   const { title, text } = req.body
   const { _id: owner } = req.session.currentUser
 
   Post.create({ owner, title, text })
-    .then(() => res.redirect('/community'))
+    .then(() => res.redirect('/community/GENERAL'))
     .catch(error => next(error))
 })
 
 // General - View Post
-router.get('/post/:id', (req, res, next) => {
-  const { id } = req.params
+router.get('/GENERAL/post/:id', (req, res, next) => {
+  const { id: post_id } = req.params
+  const { _id: currentUser_id } = req.session.currentUser
+  let isFav
 
-  Post.find({ $or: [{ _id: id }, { post_id_ref: id }] })
+  User.findById(currentUser_id).then(user => {
+    isFav = user.favoritePosts.includes(post_id) ? true : false
+  })
+
+  Post.find({ $or: [{ _id: post_id }, { post_id_ref: post_id }] })
     .populate('owner')
-    .then(posts => res.render('community/general-post', { posts }))
+    .then(posts => res.render('community/general-post', { posts, isFav }))
 })
 
-// General - Post - New Reply
-router.get('/post/:id/new-reply', (req, res, next) => {
+router.post('/GENERAL/post/:id', (req, res, next) => {
+  const { id: post_id } = req.params
+  const { _id: currentUser_id } = req.session.currentUser
+  let isFav
+
+  User.findById(currentUser_id).then(user => {
+    isFav = user.favoritePosts.includes(post_id) ? true : false
+
+    if (isFav) {
+      User.findByIdAndUpdate(currentUser_id, { $pull: { favoritePosts: post_id } })
+        .then(() => res.redirect(`/community/GENERAL/post/${post_id}`))
+        .catch(err => next(err))
+    } else {
+      User.findByIdAndUpdate(currentUser_id, { $addToSet: { favoritePosts: post_id } })
+        .then(() => res.redirect(`/community/GENERAL/post/${post_id}`))
+        .catch(err => next(err))
+    }
+  })
+})
+
+// General - View Post - New Reply
+router.get('/GENERAL/post/:id/new-reply', (req, res, next) => {
   const { id } = req.params
 
   Post.findById(id).then(main_post => res.render('community/new-reply', main_post))
 })
 
-router.post('/post/:id/new-reply', (req, res, next) => {
+router.post('/GENERAL/post/:id/new-reply', (req, res, next) => {
   const { id: post_id_ref } = req.params
-  const { title, text, number_order } = req.body
+  const { title, text } = req.body
   const { _id: owner } = req.session.currentUser
 
   Post.create({ owner, title, text, post_id_ref })
-    .then(() => res.redirect(`/community/post/${post_id_ref}`))
+    .then(() => res.redirect(`/community/GENERAL/post/${post_id_ref}`))
     .catch(error => next(error))
 })
 
@@ -77,44 +137,63 @@ router.get('/:team', (req, res, next) => {
   }
 })
 
-
 // Team - New Post
-router.get('/:team/new-post', (req, res, next) => {
-  res.render('community/team-new-post')
-})
+router.get('/:team/new-post', (req, res, next) => res.render('community/team-new-post'))
 
 router.post('/:team/new-post', (req, res, next) => {
-
   const { title, text } = req.body
   const { _id: owner, team: category } = req.session.currentUser
 
   Post.create({ category, owner, title, text })
     .then(() => res.redirect(`/community/${category}`))
     .catch(error => next(error))
-
-
-});
+})
 
 // Team - View Post
 router.get('/:team/post/:id', (req, res, next) => {
-  const { id } = req.params
+  const { id: post_id } = req.params
+  const { _id: currentUser_id } = req.session.currentUser
+  let isFav
 
-  Post.find({ $or: [{ _id: id }, { post_id_ref: id }] })
+  User.findById(currentUser_id).then(user => {
+    isFav = user.favoritePosts.includes(post_id) ? true : false
+  })
+
+  Post.find({ $or: [{ _id: post_id }, { post_id_ref: post_id }] })
     .populate('owner')
-    .then(posts => res.render('community/team-post', { posts }))
+    .then(posts => res.render('community/team-post', { posts, isFav }))
 })
 
+router.post('/:team/post/:id', (req, res, next) => {
+  const { id: post_id } = req.params
+  const { _id: currentUser_id } = req.session.currentUser
+  let isFav
 
-//Team - Post - New Reply
+  User.findById(currentUser_id).then(user => {
+    isFav = user.favoritePosts.includes(post_id) ? true : false
+
+    if (isFav) {
+      User.findByIdAndUpdate(currentUser_id, { $pull: { favoritePosts: post_id } })
+        .then(() => res.redirect(`/community/${user.team}/post/${post_id}`))
+        .catch(err => next(err))
+    } else {
+      User.findByIdAndUpdate(currentUser_id, { $addToSet: { favoritePosts: post_id } })
+        .then(() => res.redirect(`/community/${user.team}/post/${post_id}`))
+        .catch(err => next(err))
+    }
+  })
+})
+
+//Team - View Post - New Reply
 router.get('/:team/post/:id/new-reply', (req, res, next) => {
-  const { id } = req.params
+  const { id: post_id } = req.params
 
-  Post.findById(id).then(main_post => res.render('community/team-new-reply', main_post))
+  Post.findById(post_id).then(main_post => res.render('community/team-new-reply', main_post))
 })
 
 router.post('/:team/post/:id/new-reply', (req, res, next) => {
   const { id: post_id_ref } = req.params
-  const { title, text, number_order } = req.body
+  const { title, text } = req.body
   const { _id: owner, team: category } = req.session.currentUser
 
   Post.create({ category, owner, title, text, post_id_ref })

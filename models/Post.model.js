@@ -17,10 +17,6 @@ const postSchema = new Schema(
     text: {
       type: String
     },
-    number_order: {
-      type: Number,
-      default: 1
-    },
     post_id_ref: {
       type: String,
       default: 'main'
