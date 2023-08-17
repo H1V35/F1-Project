@@ -14,26 +14,18 @@ const isLoggedIn = (req, res, next) => {
 //   }
 // }
 
-const updateLoggedUser = (req, res, next) => {
-  res.locals.loggedUser = req.session.currentUser
-  //   res.locals.userIsAdmin = req.session.currentUser?.role === 'ADMIN'
-  //   res.locals.userIsEditor = req.session.currentUser?.role === 'USER_PREMIUM'
-  //   res.locals.userIsBasic = req.session.currentUser?.role === 'USER'
-  next()
-}
-
 const checkRoles =
   (...admittedRoles) =>
-  (req, res, next) => {
-    const { role } = req.session.currentUser
+    (req, res, next) => {
+      const { role } = req.session.currentUser
 
-    if (admittedRoles.includes(role)) {
-      next()
-    } else {
-      console.log('----- Not Authorized -----')
-      res.redirect('/log-in?err=Not Authorized')
+      if (admittedRoles.includes(role)) {
+        next()
+      } else {
+        console.log('----- Not Authorized -----')
+        res.redirect('/log-in?err=Not Authorized')
+      }
     }
-  }
 
 const checkTeam = userTeam => (req, res, next) => {
   const { team } = req.session.currentUser
@@ -46,10 +38,32 @@ const checkTeam = userTeam => (req, res, next) => {
   }
 }
 
+const checkAdmin = userRole => (req, res, next) => {
+  const { admin } = req.session.currentUser.role
+  if (userRole === admin) {
+    next()
+  } else {
+    console.log('------NOT ADMIN------')
+    res.redirect('/log-in?err=Not Admin')
+  }
+}
+
+const isOwnerOrAdmin = userRole => (req, res, next) => {
+  const { owner } = req.session.owner.currentUser
+  if (checkAdmin === admin || userRole === owner) {
+    next()
+  } else {
+    console.log('-----NOT--OWNER-or-Admin-----')
+    res.redirect('/log-in?err=Not Admin')
+  }
+}
+
+
 module.exports = {
   isLoggedIn,
   //   isLoggedOut,
-  updateLoggedUser,
   checkRoles,
-  checkTeam
+  checkTeam,
+  checkAdmin,
+  isOwnerOrAdmin
 }
