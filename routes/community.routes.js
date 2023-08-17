@@ -12,6 +12,40 @@ router.get('/users', (req, res, next) => {
     .catch(err => console.log(err))
 })
 
+// Users - View User
+router.get('/user/:username', (req, res, next) => {
+  const { username } = req.params
+
+  User.findOne({ username })
+    .then(user => {
+      let hasTeam
+      hasTeam = user.team === 'NONE' ? false : true
+
+      Post.find({ $and: [{ category: 'GENERAL' }, { owner: user._id }, { post_id_ref: 'main' }] })
+        .then(posts => {
+          res.render('community/user-profile', { user, posts, hasTeam })
+        })
+        .catch(err => console.log(err))
+    })
+    .catch(err => console.log(err))
+})
+
+// Users - View User - Team_Posts
+router.get('/user/:username/posts/:team', (req, res, next) => {
+  const { username } = req.params
+
+  User.findOne({ username }).then(user => {
+    let hasTeam
+    hasTeam = user.team === 'NONE' ? false : true
+
+    Post.find({ $and: [{ category: user.team }, { owner: user._id }, { post_id_ref: 'main' }] })
+      .then(posts => {
+        res.render('community/user-team_posts', { user, posts, hasTeam })
+      })
+      .catch(err => console.log(err))
+  })
+})
+
 // General
 router.get('/GENERAL', (req, res, next) => {
   Post.find({ $and: [{ category: 'GENERAL' }, { post_id_ref: 'main' }] })
