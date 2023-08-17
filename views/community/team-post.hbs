@@ -23,15 +23,33 @@
 
     <div class='col-4'>
       <div>
-        <a href='/community/{{loggedUser.team}}/new-post' class='btn btn-dark shadow'>New Post</a>
+        <a href='/community/{{loggedUser.team}}/post/{{posts.0._id}}/new-reply' class='btn btn-dark shadow'>New Reply</a>
       </div>
     </div>
   </div>
 
   <hr />
 
+  <h2>{{posts.0.title}}</h2>
+
+  {{#if isFav}}
+    <form action='/community/{{loggedUser.team}}/post/{{posts.0._id}}' method='POST'>
+      <button type='submit' class='btn btn-login block shadow'>Fav</button>
+    </form>
+  {{else}}
+    <form action='/community/{{loggedUser.team}}/post/{{posts.0._id}}' method='POST'>
+      <button type='submit' class='btn btn-dark block shadow'>Fav</button>
+    </form>
+  {{/if}}
+
   {{#each posts}}
-    <a href='/community/{{category}}/post/{{_id}}' class='mb-3 d-grid btn btn-dark shadow'>{{owner.username}} | {{title}}</a>
+    <div class='mt-3 mb-5 card'>
+      <div class='card-body'>
+        <h2>@{{owner.username}}</h2>
+        <br />
+        <h3>{{text}}</h3>
+      </div>
+    </div>
   {{/each}}
 
 </div>

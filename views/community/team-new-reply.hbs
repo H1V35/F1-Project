@@ -4,10 +4,10 @@
 
     <div class='col'>
 
-      <h1>New Post</h1>
+      <h1>New Reply</h1>
       <hr />
 
-      <form action='/community/GENERAL/new-post' method='POST'>
+      <form action='/community/{{loggedUser.team}}/post/{{_id}}/new-reply' method='POST'>
 
         <div class='mb-3'>
           <label for='titleInput' class='form-label'>Title</label>
