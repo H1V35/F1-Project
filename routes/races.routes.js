@@ -6,17 +6,17 @@ router.get('/schedule', (req, res, next) => {
   f1Api
     .getAllRaces()
     .then(responseFromAPI => {
-      const allRaces = responseFromAPI.data.MRData.RaceTable.Races
+      const { Races } = responseFromAPI.data.MRData.RaceTable
 
       const currentDate = new Date()
-      const newRaces = allRaces.filter(race => new Date(race.date) > currentDate)
-      const oldRaces = allRaces.filter(race => new Date(race.date) < currentDate).reverse()
 
-      const locations = allRaces.map(race => race.Circuit.Location)
+      const newRaces = Races.filter(race => new Date(race.date) > currentDate)
+      const oldRaces = Races.filter(race => new Date(race.date) < currentDate).reverse()
+      const locations = Races.map(race => race.Circuit.Location)
 
       res.render('races/schedule', { newRaces, oldRaces, locations })
     })
-    .catch(err => console.log(err))
+    .catch(err => next(err))
 })
 
 module.exports = router

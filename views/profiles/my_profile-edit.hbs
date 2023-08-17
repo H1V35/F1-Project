@@ -1,0 +1,40 @@
+<div class='container'>
+
+  <div class='row justify-content-center mt-5'>
+
+    <div class='col-md-8'>
+
+      <h1>Edit Profile</h1>
+      <hr />
+
+      <form action='/profile/edit' method='POST'>
+
+        <h2>@{{user.username}}</h2>
+        <h3>{{user.team}}</h3>
+        <br />
+
+        <div class='mb-3'>
+          <label for='avatarInput' class='form-label'>Avatar</label>
+          <input type='text' class='form-control' id='avatarInput' name='avatar' value='{{user.avatar}}' />
+        </div>
+
+        <div class='mb-3'>
+          <label for='bioInput' class='form-label'>Bio</label>
+          <textarea type='text' class='form-control' id='bioInput' name='bio' rows='7'></textarea>
+        </div>
+
+        <div class='d-grid mb-3'>
+          <button type='submit' class='btn btn-dark block'>EDIT</button>
+        </div>
+
+        {{#if errorMessage}}
+          <div id='errorMessage' class='d-grid'>
+            <button type='button' class='btn btn-primary' disabled>{{errorMessage}}</button>
+          </div>
+        {{/if}}
+
+      </form>
+    </div>
+  </div>
+
+</div>

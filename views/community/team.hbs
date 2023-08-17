@@ -8,7 +8,7 @@
         <a href='/community/GENERAL' class='btn btn-outline-primary' for='general'>GENERAL</a>
 
         <input type='radio' class='btn-check' name='btnradio' id='team' autocomplete='off' checked />
-        <a href='/community/{{loggedUser.team}}' class='btn btn-outline-primary' for='team'>{{loggedUser.team}}</a>
+        <a href='/community/{{user.team}}' class='btn btn-outline-primary' for='team'>{{user.team}}</a>
       </div>
     </div>
 
@@ -23,7 +23,7 @@
 
     <div class='col-4'>
       <div>
-        <a href='/community/{{loggedUser.team}}/new-post' class='btn btn-dark shadow'>New Post</a>
+        <a href='/community/{{user.team}}/new-post' class='btn btn-dark shadow'>New Post</a>
       </div>
     </div>
   </div>
@@ -31,8 +31,9 @@
   <hr />
 
   {{#each posts}}
-  <a href='/community/{{category}}/post/{{_id}}' class='mb-3 d-grid btn btn-dark shadow'>{{owner.username}} |
-    {{title}}</a>
+    <a href='/community/{{category}}/post/{{_id}}' class='mb-3 d-grid btn btn-dark shadow'>{{owner.username}}
+      |
+      {{title}}</a>
   {{/each}}
 
 </div>

@@ -1,0 +1,43 @@
+<div class='container'>
+
+  <div class='row justify-content-center mt-5'>
+
+    <div class='col-md-8'>
+
+      <h1>SELECT TEAM</h1>
+      <hr />
+
+      <form action='/profile/select-team' method='POST'>
+
+        <div class='mb-4'>
+          <label for='teamInput' class='form-label'>Team</label>
+          <select class='form-select' id='teamInput' name='team' aria-label='Default select example'>
+            <option value='NONE'>None</option>
+            <option value='ALFA_ROMEO'>Alfa Romeo</option>
+            <option value='ALPHATAURI'>AlphaTauri</option>
+            <option value='ALPINE'>Alpine</option>
+            <option value='ASTON_MARTIN'>Aston Martin</option>
+            <option value='FERRARI'>Ferrari</option>
+            <option value='HAAS'>Haas</option>
+            <option value='MCLAREN'>McLaren</option>
+            <option value='MERCEDES'>Mercedes</option>
+            <option value='RED_BULL'>Red Bull</option>
+            <option value='WILLIAMS'>Williams</option>
+          </select>
+        </div>
+
+        <div class='d-grid mb-3'>
+          <button type='submit' class='btn btn-dark block'>CONFIRM</button>
+        </div>
+
+        {{#if errorMessage}}
+          <div id='errorMessage' class='d-grid'>
+            <button type='button' class='btn btn-primary' disabled>{{errorMessage}}</button>
+          </div>
+        {{/if}}
+
+      </form>
+    </div>
+  </div>
+
+</div>

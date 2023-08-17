@@ -3,14 +3,14 @@ require('dotenv').config()
 require('./db')
 
 const express = require('express')
-const hbs = require('hbs')
-const { updateLoggedUser } = require('./middlewares/route-guard')
 const app = express()
 
 require('./config')(app)
 require('./config/session.config')(app)
 
 app.locals.appTitle = 'F1-Project'
+
+const { updateLoggedUser } = require('./middlewares/user-updater')
 app.use(updateLoggedUser)
 
 require('./routes')(app)
