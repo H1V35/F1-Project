@@ -16,7 +16,4 @@ module.exports = app => {
 
   const profilesRoutes = require('./profiles.routes')
   app.use('/profile', profilesRoutes)
-
-  //   const apiRoutes = require('./api.routes')
-  //   app.use('/api', apiRoutes)
 }

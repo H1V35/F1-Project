@@ -7,8 +7,14 @@
         <input type='radio' class='btn-check' name='btnradio' id='general' autocomplete='off' />
         <a href='/community/GENERAL' class='btn btn-outline-primary' for='general'>GENERAL</a>
 
-        <input type='radio' class='btn-check' name='btnradio' id='team' autocomplete='off' />
-        <a href='/community/{{loggedUser.team}}' class='btn btn-outline-primary' for='team'>TEAM</a>
+        {{#unless hasNoTeam}}
+          <input type='radio' class='btn-check' name='btnradio' id='team' autocomplete='off' />
+          <a href='/community/{{user.team}}' class='btn btn-outline-primary' for='team'>TEAM</a>
+        {{/unless}}
+        {{#if hasNoTeam}}
+          <input type='radio' class='btn-check' name='btnradio' id='team' autocomplete='off' />
+          <a href='/profile/select-team' class='btn btn-outline-primary' for='team'>SELECT TEAM</a>
+        {{/if}}
       </div>
     </div>
 

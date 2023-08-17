@@ -10,24 +10,22 @@
 
     <div class='col-7 d-grid'>
 
-      <div class='row'>
+      <div class='row d-flex justify-content-between'>
         <div class='col'>
           <h1>@{{user.username}}</h1>
           <h2>{{user.team}}</h2>
-          <div class='card'>
-            <div class='card-body'>
-              <p>{{user.bio}}</p>
+        </div>
+        <div class='col-2'>
+          <a href='/sign-up' class='btn btn-login'>Delete</a>
+        </div>
+        <div class='row'>
+          <div class='col'>
+            <div class='card'>
+              <div class='card-body'>
+                <p>{{user.bio}}</p>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div class='row d-flex justify-content-end align-items-end'>
-        <div class='col-2 d-flex justify-content-end'>
-          <a href='/sign-up' class='btn btn-dark'>Edit</a>
-        </div>
-        <div class='col-2 d-flex justify-content-end'>
-          <a href='/sign-up' class='btn btn-login'>Delete</a>
         </div>
       </div>
 
@@ -40,10 +38,10 @@
         <input type='radio' class='btn-check' name='btnradio' id='profile' autocomplete='off' />
         <a href='/community/user/{{user.username}}' class='btn btn-outline-primary' for='profile'>POSTS</a>
 
-        {{#if hasTeam}}
+        {{#unless hasNoTeam}}
           <input type='radio' class='btn-check' name='btnradio' id='profile' autocomplete='off' checked />
           <a href='/community/user/{{user.username}}/posts/{{user.team}}' class='btn btn-outline-primary' for='profile'>#{{user.team}}</a>
-        {{/if}}
+        {{/unless}}
       </div>
     </div>
   </div>

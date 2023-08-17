@@ -11,11 +11,11 @@ router.get('/drivers', (req, res, next) => {
   f1Api
     .getAllDriversStandings()
     .then(responseFromAPI => {
-      const drivers = responseFromAPI.data.MRData.StandingsTable.StandingsLists[0].DriverStandings
+      const { DriverStandings: drivers } = responseFromAPI.data.MRData.StandingsTable.StandingsLists[0]
 
       res.render('standings/drivers', { drivers })
     })
-    .catch(err => console.log(err))
+    .catch(err => next(err))
 })
 
 // Teams Standings
@@ -23,11 +23,11 @@ router.get('/teams', (req, res, next) => {
   f1Api
     .getAllTeamsStandings()
     .then(responseFromAPI => {
-      const teams = responseFromAPI.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings
+      const { ConstructorStandings: teams } = responseFromAPI.data.MRData.StandingsTable.StandingsLists[0]
 
       res.render('standings/teams', { teams })
     })
-    .catch(err => console.log(err))
+    .catch(err => next(err))
 })
 
 module.exports = router
