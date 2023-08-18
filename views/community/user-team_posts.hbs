@@ -1,9 +1,9 @@
-<div class='container mt-4'>
+<div class='container profile mt-4'>
 
   <div class='row'>
 
     <div class='col-5'>
-      <figure>
+      <figure class='profile-img'>
         <img src='{{user.avatar}}' alt='{{user.username}}' />
       </figure>
     </div>
@@ -16,7 +16,11 @@
           <h2>{{user.team}}</h2>
         </div>
         <div class='col-2'>
-          <a href='/sign-up' class='btn btn-login'>Delete</a>
+          {{#if userRoles.isADMIN}}
+            <form action='/community/user/{{user.username}}/delete' method='POST'>
+              <input type='submit' value='Delete' class='btn btn-login block' />
+            </form>
+          {{/if}}
         </div>
         <div class='row'>
           <div class='col'>

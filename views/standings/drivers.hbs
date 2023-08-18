@@ -2,44 +2,49 @@
 
   {{#each drivers}}
 
-  <div class='card mb-3'>
-    <div class='card-side front'>
-      <div class='row'>
-        <div class='col-4'>
+    <div class='driver-card mb-4' data-card-id='{{@index}}'>
+      <div class='card-front'>
+
+        <div class='col'>
+
           <div class='row'>
-            <div class='col'>
+            <div class='col-12 text-center'>
               <h2>{{position}}º</h2>
             </div>
-          </div>
-          <div class='row'>
-            <div class='col'>
-              <h2>{{points}}</h2>
+
+            <div class='col-12 text-center'>
+              <h3>Points: {{points}}</h3>
             </div>
           </div>
-        </div>
-        <div class='col-4'>
-          <h3>{{Driver.givenName}} {{Driver.familyName}}</h3>
-        </div>
-        <div class='col-4'>
-          <h4>{{Constructors.0.name}}</h4>
-        </div>
-      </div>
-    </div>
 
-    <div class='card-side back'>
-      <div class='row'>
-        <div class='col-4'>
-          <img src="/images/drivers/{{Driver.code}}.png" </img>
         </div>
-        <div class='col-4'>
-          <h3>{{Driver.code}}</h3>
+
+        <div class='col-4 text-center'>
+          <h4>{{Driver.givenName}} {{Driver.familyName}}</h4>
         </div>
-        <div class='col-4'>
-          <h4>{{Driver.nationality}}</h4>
+
+        <div class='col-4 text-center'>
+          <h3>{{Constructors.0.name}}</h3>
         </div>
+
+      </div>
+
+      <div class='card-back'>
+
+        <div class='col-4 text-center'>
+          <img src='/images/drivers/{{Driver.code}}.png' />
+        </div>
+
+        <div class='col-4 text-center'>
+          <h2>{{Driver.code}}</h2>
+        </div>
+
+        <div class='col-4 text-center'>
+          <h3>{{Driver.nationality}}</h3>
+        </div>
+
       </div>
     </div>
-  </div>
 
   {{/each}}
 

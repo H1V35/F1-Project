@@ -1,17 +1,53 @@
-<hr />
+<div class='container my-5'>
 
-{{#each teams}}
+  {{#each teams}}
 
-<h2>Position: {{position}}</h2>
-<h2>Name: {{Constructor.name}}</h2>
-<img src="/images/teams/{{Constructor.name}}-car.png"></img>
-<img src="/images/teams/{{Constructor.name}}-logo.png"></img>
-<h3>Nationality: {{Constructor.nationality}} </h3>
-<br />
+    <div class='team-card mb-4' data-card-id='{{@index}}'>
+      <div class='card-front'>
 
-<h2>Points: {{position}}</h2>
-<h3>Wins: {{wins}}</h3>
+        <div class='col'>
 
-<hr />
+          <div class='row'>
+            <div class='col-12 text-center'>
+              <h2>{{position}}º</h2>
+            </div>
 
-{{/each}}
+            <div class='col-12 text-center'>
+              <h3>Points: {{points}}</h3>
+            </div>
+          </div>
+
+        </div>
+
+        <div class='col-4 text-center'>
+          <img src='/images/teams/{{Constructor.name}}-logo.png' />
+        </div>
+
+        <div class='col-4 text-center'>
+          <h3>{{Constructor.name}}</h3>
+        </div>
+
+      </div>
+
+      <div class='card-back'>
+
+        <div class='col-4 text-center'>
+          <figure class='team-car'>
+            <img src='/images/teams/{{Constructor.name}}-car.png' />
+          </figure>
+        </div>
+
+        <div class='col-4 text-center'>
+          <h2>{{wins}} WINS</h2>
+        </div>
+
+        <div class='col-4 text-center'>
+          <h3>{{Constructor.nationality}}</h3>
+        </div>
+
+      </div>
+    </div>
+
+  {{/each}}
+
+</div>

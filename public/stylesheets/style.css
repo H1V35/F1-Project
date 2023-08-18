@@ -1,3 +1,5 @@
+/* Fonts */
+
 @font-face {
   font-family: F1-Wide;
   src: url('../fonts/Formula1-Wide.otf');
@@ -12,6 +14,8 @@
   font-family: F1-Regular;
   src: url('../fonts/Formula1-Regular.otf');
 }
+
+/* Tags */
 
 img {
   width: 100%;
@@ -33,6 +37,8 @@ footer {
   text-align: right;
   width: 100%;
 }
+
+/* Classes */
 
 .navbar {
   background-color: #000000;
@@ -137,19 +143,18 @@ footer {
 .col-drivers-standings {
   padding-left: 12px;
   padding-right: 0;
-  background-image: url('../images/f1-drivers.jpg');
+  background-image: url('/images/f1-drivers.jpg');
   background-size: cover;
 }
 
 .col-constructors-standings {
   padding-left: 0;
   padding-right: 12px;
-  background-image: url('../images/f1-contructors.jpg');
+  background-image: url('/images/f1-contructors.jpg');
   background-size: cover;
 }
 
 .btn-standings {
-  /* background: none; */
   border-radius: 0;
   display: flex;
   position: absolute;
@@ -168,25 +173,193 @@ footer {
 
 .btn-standings-drivers {
   justify-content: right;
-  /* align-items: center; */
   padding-right: 1.5rem;
 }
 
 .btn-standings-constructors {
   justify-content: left;
-  /* align-items: center; */
   padding-left: 1.5rem;
 }
 
 .btn-standings p {
   font-size: 3rem;
   font-family: F1-Wide;
-  /* font-style: italic; */
 }
 
 .btn-text-center {
   text-align: center;
 }
+
+/* STANDINGS CARDS */
+
+.driver-card {
+  width: 80rem;
+  height: 20rem;
+  perspective: 1000px;
+}
+
+.driver-card.flipped .card-front {
+  transform: rotateX(180deg);
+}
+
+.driver-card.flipped .card-back {
+  transform: rotateX(0deg);
+}
+
+.card-front,
+.card-back {
+  width: 80rem;
+  height: 20rem;
+  background: rgb(40, 40, 40);
+  background: linear-gradient(180deg, rgb(10, 10, 10) 70%, rgba(255, 0, 0, 1) 100%);
+  border: #ff0000 1px solid;
+  border-radius: 1rem;
+  position: absolute;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.5s;
+}
+
+.card-front {
+  transform: rotateX(0deg);
+}
+
+.card-back {
+  transform: rotateX(-180deg);
+}
+
+.card-back img {
+  width: 19.75rem;
+}
+
+.card-front h2 {
+  font-family: F1-Bold;
+  font-size: 5rem;
+}
+
+.card-front h3 {
+  font-family: F1-Regular;
+  font-size: 2rem;
+}
+
+.card-front h4 {
+  font-family: F1-Bold;
+  font-size: 2.5rem;
+}
+
+.card-back h2 {
+  font-family: F1-Wide;
+  font-size: 3rem;
+}
+
+.card-back h3 {
+  font-family: F1-Regular;
+  font-size: 2rem;
+}
+
+.team-card {
+  width: 80rem;
+  height: 20rem;
+  perspective: 1000px;
+}
+
+.team-card.flipped .card-front {
+  transform: rotateX(180deg);
+}
+
+.team-card.flipped .card-back {
+  transform: rotateX(0deg);
+}
+
+.team-car img {
+  top: 9rem;
+  left: -1.5rem;
+  position: absolute;
+  width: 45em;
+  z-index: -10;
+}
+
+/* Schedule */
+
+.schedule {
+  text-align: center;
+}
+
+.schedule h2 {
+  font-family: F1-Wide;
+  font-size: 3rem;
+  color: #ff0000;
+}
+
+.schedule h3 {
+  font-size: 2rem;
+  font-family: F1-Bold;
+}
+
+.schedule h4 {
+  font-size: 1.2rem;
+  color: #cecece;
+}
+
+/* Cards */
+
+.card {
+  background-color: rgb(33, 33, 33);
+  border: #ff0000 solid 1px;
+  border-radius: 1rem;
+  color: white;
+}
+
+.card-body {
+  background-color: rgb(33, 33, 33);
+  border: #ff0000 solid 1px;
+  border-radius: 1rem;
+  color: white;
+}
+
+.card h2 {
+  font-family: F1-Bold;
+  font-size: 2rem;
+}
+
+.card h3 {
+  font-size: 1.5rem;
+}
+
+.card-body h2 {
+  font-family: F1-Bold;
+  font-size: 2rem;
+}
+
+.card-body h3 {
+  font-size: 1.5rem;
+}
+
+/* Profiles */
+
+.profile h1 {
+  font-family: F1-Bold;
+  font-size: 3rem;
+}
+
+.profile h2 {
+  font-size: 1.5rem;
+  color: rgb(200, 200, 200);
+}
+
+.profile-img img {
+  border-radius: 2rem;
+  width: 30rem;
+  height: 22rem;
+  object-fit: cover;
+}
+
+/* IDs */
 
 #errorMessage button {
   background-color: #ff0000;
@@ -207,6 +380,8 @@ footer {
 #myMap {
   height: 70vh;
 }
+
+/* Animations */
 
 @keyframes showAnimation {
   0% {

@@ -14,6 +14,9 @@ module.exports = app => {
   const communityRoutes = require('./community.routes')
   app.use('/community', communityRoutes)
 
+  const usersRoutes = require('./users.routes')
+  app.use('/community/user', usersRoutes)
+
   const profilesRoutes = require('./profiles.routes')
   app.use('/profile', profilesRoutes)
 }

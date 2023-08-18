@@ -14,7 +14,7 @@
 
     <div class='col-1'>
       <div>
-        <a href='/community/users' class='btn btn-dark btn-index shadow'>USERS</a>
+        <a href='/community/user/list' class='btn btn-dark btn-index shadow'>USERS</a>
       </div>
     </div>
   </div>
@@ -45,6 +45,12 @@
   {{#each posts}}
     <div class='mt-3 mb-5 card'>
       <div class='card-body'>
+        {{#if ../userRoles.isADMIN}}
+          <a href='/community/{{category}}/post/{{id}}/edit' class='btn btn-dark'>EDIT</a>
+          <form action='/community/{{category}}/post/{{id}}/delete' method='POST'>
+            <input type='submit' value='Delete' class='btn btn-login block' />
+          </form>
+        {{/if}}
         <h2>@{{owner.username}}</h2>
         <br />
         <h3>{{text}}</h3>

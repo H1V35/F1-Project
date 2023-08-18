@@ -1,32 +1,45 @@
-<div class='container mt-5'>
+<div class='container mt-5 schedule'>
+
+  <h2>NEXT RACES</h2>
   <hr />
 
   {{#each newRaces}}
     <div>
-      <h2>Round: {{round}}</h2>
-      <h2>Circuit: {{Circuit.circuitName}}</h2>
-      <h3>Date: {{date}}</h3>
-      <h3>Location: {{Circuit.Location.locality}} ({{Circuit.Location.country}})</h3>
+      <br />
+      <h3>Round {{round}}</h3>
+      <br />
+      <h3>Circuit {{Circuit.circuitName}}</h3>
+      <br />
+      <h4>{{date}} / {{Circuit.Location.locality}} ({{Circuit.Location.country}})</h4>
+      <br />
       <hr />
     </div>
   {{/each}}
 
-  <hr />
-  <hr />
+  <br />
+  <br />
+  <br />
+  <h2>PAST RACES</h2>
   <hr />
 
   {{#each oldRaces}}
     <div>
-      <h2>Round: {{round}}</h2>
-      <h2>Circuit: {{Circuit.circuitName}}</h2>
-      <h3>Date: {{date}}</h3>
-      <h3>Location: {{Circuit.Location.locality}} ({{Circuit.Location.country}})</h3>
+      <br />
+      <h3>Round {{round}}</h3>
+      <br />
+      <h3>Circuit {{Circuit.circuitName}}</h3>
+      <br />
+      <h4>{{date}} / {{Circuit.Location.locality}} ({{Circuit.Location.country}})</h4>
+      <br />
       <hr />
     </div>
   {{/each}}
 
   <div class='container'>
-    <h1>Circuits Location</h1>
+    <br />
+    <br />
+    <br />
+    <h2>Circuits Location</h2>
     <hr />
     <figure id='myMap'></figure>
   </div>

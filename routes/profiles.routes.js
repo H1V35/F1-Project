@@ -4,7 +4,7 @@ const User = require('../models/User.model')
 const Post = require('../models/Post.model')
 
 // My Profile - Posts
-router.get('/', (req, res, next) => {
+router.get('/', isLoggedIn, (req, res, next) => {
   const { currentUser: user } = req.session
 
   User.findById(user._id)
@@ -17,7 +17,7 @@ router.get('/', (req, res, next) => {
 })
 
 // My Profile - Team_Posts
-router.get('/posts/:team', (req, res, next) => {
+router.get('/posts/:team', isLoggedIn, (req, res, next) => {
   const { currentUser: user } = req.session
 
   User.findById(user._id)
@@ -30,7 +30,7 @@ router.get('/posts/:team', (req, res, next) => {
 })
 
 // My Profile - Favs
-router.get('/favs', (req, res, next) => {
+router.get('/favs', isLoggedIn, (req, res, next) => {
   const { currentUser: user } = req.session
 
   User.findById(user._id)
@@ -40,7 +40,7 @@ router.get('/favs', (req, res, next) => {
 })
 
 // My Profile - Edit
-router.get('/edit', (req, res, next) => {
+router.get('/edit', isLoggedIn, (req, res, next) => {
   const { currentUser: user } = req.session
 
   User.findById(user._id)
@@ -48,7 +48,7 @@ router.get('/edit', (req, res, next) => {
     .catch(err => next(err))
 })
 
-router.post('/edit', (req, res, next) => {
+router.post('/edit', isLoggedIn, (req, res, next) => {
   const { currentUser: user } = req.session
   const { bio, avatar } = req.body
 
@@ -59,7 +59,7 @@ router.post('/edit', (req, res, next) => {
 
 // My Profile - Select Team
 
-router.get('/select-team', (req, res, next) => {
+router.get('/select-team', isLoggedIn, (req, res, next) => {
   const { currentUser: user } = req.session
   let hasNoTeam = user.team === 'NONE'
 
@@ -72,7 +72,7 @@ router.get('/select-team', (req, res, next) => {
     .catch(err => next(err))
 })
 
-router.post('/select-team', (req, res, next) => {
+router.post('/select-team', isLoggedIn, (req, res, next) => {
   const { currentUser: user } = req.session
   const { team } = req.body
 
