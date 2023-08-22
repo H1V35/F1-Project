@@ -9,7 +9,8 @@ const isLoggedIn = (req, res, next) => {
 const checkRoles =
   (...admittedRoles) =>
   (req, res, next) => {
-    const { currentUser: role } = req.session
+    const { role } = req.session.currentUser
+    console.log(role)
 
     if (admittedRoles.includes(role)) {
       next()
